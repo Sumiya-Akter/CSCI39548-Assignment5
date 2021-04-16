@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
+// eslint-disable-next-line
+import { render } from 'react-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+//creates array for api data, an open string for City and state is set to false until found
+class searchAPI extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      apiData: [],
+      Zip: "",
+      found: false
+    }
+  }
+  //function for what happens when you input the zip code
+  handleInputChange = (event) => {
+    this.setState({ Zip: event.target.value});
+  }
+//function for what happens when you click the search button
+  handleSearchClick = async () => {
+    let ZipCode = this.state.Zip;
+    // eslint-disable-next-line
+    let linkToAPI = 'https://ctp-zip-api.herokuapp.com/zip/:zipcode' + ZipCode;
+
+  }
+
+
+  render() {
+    return (
+      <div className="App">
+        <div className="App-header">
+          <h3>Search Zip: </h3>
+          <input type="text" placeholder="zip code" onChange={this.handleInputChange}/>
+          <button className="search zip" onClick={this.handleSearchClick}>Search</button>
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default searchAPI;
