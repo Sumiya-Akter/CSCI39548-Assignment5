@@ -23,7 +23,7 @@ class searchAPI extends Component {
     let ZipCode = this.state.Zip;
     // eslint-disable-next-line
     let linkToAPI = 'https://ctp-zip-api.herokuapp.com/zip/:zipcode' + ZipCode;
-
+    console.log(this.state.Zip);
   }
 
 
