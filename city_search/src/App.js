@@ -22,7 +22,7 @@ class searchAPI extends Component {
     let cityName = this.state.City;
     // eslint-disable-next-line
     let linkToAPI = 'https://ctp-zip-api.herokuapp.com/city/:CITYNAME' + cityName;
-
+    console.log(cityName);
   }
 
 
