@@ -24,34 +24,47 @@ class searchAPI extends Component {
     let ZipCode = this.state.Zip;
     // eslint-disable-next-line
     let linkToAPI = 'https://ctp-zip-api.herokuapp.com/zip/' + ZipCode;
-  // console.log(this.state.Zip);
+  console.log(this.state.Zip);
     fetch(linkToAPI)
     .then((response) => {
       if(response.status === 404){
           return;
-        }
+      }
       return response.json();
   })
     .then((data) => { //data is response.json()
       this.setState({apiData: data, found: true});
     })
   .catch((error) => {
-      console.error('Error:', error);
+    if (error.response) {
+      console.log("Error Data: ", error.response.data); //Not found
+      console.log("Error Status: ", error.response.status); //404
+      this.setState({found: false});
+    }
   });
   }
 
   makeTable = () => {
     let currData = this.state.apiData;
+    console.log("apiData: ", currData);
+    console.log("State: ", currData.State);
+    console.log("Population: ", currData.EstimatedPopulation);
+    console.log("Wages: ", currData.TotalWages);
     let foundMatch = this.state.found;
+    console.log("match: ", foundMatch);
     let table = [];
     //found is false when we get 404 error
     if(!foundMatch){
+        console.log("No result found");
         table.push(<tr key={-1}><td>No Results</td></tr>);
         return table;
     } else {
         let state = currData.State;
         let population = currData.EstimatedPopulation
         let totalwages = currData.TotalWages;
+        console.log("State: ", state);
+        console.log("Population: ", population);
+        console.log("Wages: ", totalwages);
         table.push(
           <tr key={currData.id}>
             <td>State: {state}</td>
@@ -69,7 +82,7 @@ class searchAPI extends Component {
       <div className="App">
         <div className="App-header">
           <h3>Search Zip: </h3>
-          <input type="text" placeholder="zip code"  onChange={this.handleInputChange}/>
+          <input type="text" placeholder="zip code" onChange={this.handleInputChange}/>
           <button className="search zip" onClick={this.handleSearchClick}>Search</button>
         </div>
         <br/>
