@@ -20,7 +20,7 @@ class searchAPI extends Component {
   }
 
 //function for what happens when you click the search button
-  handleSearchClick = async() => {
+  handleSearchClick = async(submit) => {
     let ZipCode = this.state.Zip;
     // eslint-disable-next-line
     let linkToAPI = 'https://ctp-zip-api.herokuapp.com/zip/' + ZipCode;
@@ -33,7 +33,7 @@ class searchAPI extends Component {
       return response.json();
   })
     .then((data) => { //data is response.json()
-      this.setState({apiData: data});
+      this.setState({apiData: data, found: true});
     })
   .catch((error) => {
       console.error('Error:', error);
