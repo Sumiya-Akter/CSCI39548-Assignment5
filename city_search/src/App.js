@@ -21,8 +21,6 @@ class searchAPI extends Component {
     let cityName = this.state.City;
     // eslint-disable-next-line
     let linkToAPI = 'https://ctp-zip-api.herokuapp.com/city/' + cityName;
-    console.log(cityName);
-    console.log(linkToAPI);
     try {
       let response = await axios.get(linkToAPI);
       this.setState({apiData: response.data, found: true})
@@ -37,7 +35,6 @@ class searchAPI extends Component {
 
   makeTable = () => {
     let currData = this.state.apiData;
-    console.log(this.state.apiData);
     let foundMatch = this.state.found;
     let table = [];
     //found is false when we get 404 error
@@ -64,6 +61,7 @@ class searchAPI extends Component {
           <button className="search-city" onClick={this.handleSearchClick}>Search</button>
         </div>
         <br/>
+        <h5>Zip Codes: </h5>
         <table id="data">
           <tbody>
             {this.makeTable()}
