@@ -43,7 +43,7 @@
 }
 
 #data {
-  text-align: center !important;
+  text-align: left !important;
   display: flex;
 }
 

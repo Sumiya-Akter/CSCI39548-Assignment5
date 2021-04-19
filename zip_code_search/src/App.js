@@ -47,12 +47,21 @@ class searchAPI extends Component {
     } else {
         for (let i = 0; i < currData.length; i++) {
           table.push(
-            <tr key={currData[i].id}>
-              <td>State: {currData[i].State},</td>
-              <td>Location: {currData[i].Lat}, {currData[i].Long},</td>
-              <td>Estimated Population: {currData[i].EstimatedPopulation},</td>
-              <td>Total Wages: {currData[i].TotalWages}</td>
+            <tbody>
+            <tr>
+            <td> {currData[i].City}, {currData[i].State }</td>
             </tr>
+            <tr key={currData[i].id}>
+            <td>
+            <ul>
+            <li>State: {currData[i].State}</li>
+            <li>Location: {currData[i].Lat}, {currData[i].Long}</li>
+            <li>Estimated Population: {currData[i].EstimatedPopulation}</li>
+            <li>Total Wages: {currData[i].TotalWages}</li>
+            </ul>
+            </td>
+            </tr>
+            </tbody>
           );
         }
         return table;
