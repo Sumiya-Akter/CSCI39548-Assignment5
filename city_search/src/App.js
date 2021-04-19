@@ -21,10 +21,37 @@ class searchAPI extends Component {
   handleSearchClick = async () => {
     let cityName = this.state.City;
     // eslint-disable-next-line
-    let linkToAPI = 'https://ctp-zip-api.herokuapp.com/city/:CITYNAME' + cityName;
-    console.log(cityName);
+    let linkToAPI = 'https://ctp-zip-api.herokuapp.com/city/' + cityName;
+    try {
+      let response = await axios.get(linkToAPI);
+      this.setState({apiData: response.data, found: true})
+    } catch (error) {
+      if (error.response) {
+        console.log("Error Data: ", error.response.data); //Not found
+        console.log("Error Status: ", error.response.status); //404
+        this.setState({found: false});
+      }
+    }
   }
 
+  makeTable = () => {
+    let currData = this.state.apiData;
+    let foundMatch = this.state.found;
+    let table = [];
+    //found is false when we get 404 error
+    if (!foundMatch) {
+      table.push(<tr key={-1}><td>No Results</td></tr>);
+    } else {
+      for (let i = 0; i < currData.length; i++) {
+        table.push(
+          <tr key={currData[i].id}>
+            <td>{currData[i]}</td>
+          </tr>
+        )
+      }
+    }
+    return table;
+  }
 
   render() {
     return (
@@ -34,6 +61,13 @@ class searchAPI extends Component {
           <input type="text" placeholder="city name" onChange={this.handleInputChange}/>
           <button className="search city" onClick={this.handleSearchClick}>Search</button>
         </div>
+        <br/>
+        <h5>Zip Codes: </h5>
+        <table id="data">
+          <tbody>
+            {this.makeTable()}
+          </tbody>
+        </table>
       </div>
     );
   }
