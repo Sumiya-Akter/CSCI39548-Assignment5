@@ -56,6 +56,7 @@ class searchAPI extends Component {
           console.log("Wages: ", currData[i].TotalWages);
           table.push(
             <tr key={currData[i].id}>
+              <td>City: {currData[i].City}</td>
               <td>State: {currData[i].State}</td>
               <td>Total Wages: {currData[i].TotalWages}</td>
               <td>Estimated Population: {currData[i].EstimatedPopulation}</td>
@@ -70,7 +71,7 @@ class searchAPI extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h3>Search Zip: </h3>
+          <h3>Zip Code Search: </h3>
           <input type="text" value={this.state.Zip} placeholder="zip code" onChange={this.handleInputChange}/>
           <button className="search-zip" onClick={this.handleSearchClick}>Search</button>
         </div>
