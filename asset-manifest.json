@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/CSCI39548-Assignment5/static/css/main.05908865.chunk.css",
+    "main.js": "/CSCI39548-Assignment5/static/js/main.10536f44.chunk.js",
+    "main.js.map": "/CSCI39548-Assignment5/static/js/main.10536f44.chunk.js.map",
+    "runtime-main.js": "/CSCI39548-Assignment5/static/js/runtime-main.f51fd5a6.js",
+    "runtime-main.js.map": "/CSCI39548-Assignment5/static/js/runtime-main.f51fd5a6.js.map",
+    "static/js/2.0148efc8.chunk.js": "/CSCI39548-Assignment5/static/js/2.0148efc8.chunk.js",
+    "static/js/2.0148efc8.chunk.js.map": "/CSCI39548-Assignment5/static/js/2.0148efc8.chunk.js.map",
+    "static/js/3.1c9f114a.chunk.js": "/CSCI39548-Assignment5/static/js/3.1c9f114a.chunk.js",
+    "static/js/3.1c9f114a.chunk.js.map": "/CSCI39548-Assignment5/static/js/3.1c9f114a.chunk.js.map",
+    "index.html": "/CSCI39548-Assignment5/index.html",
+    "static/css/main.05908865.chunk.css.map": "/CSCI39548-Assignment5/static/css/main.05908865.chunk.css.map",
+    "static/js/2.0148efc8.chunk.js.LICENSE.txt": "/CSCI39548-Assignment5/static/js/2.0148efc8.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f51fd5a6.js",
+    "static/js/2.0148efc8.chunk.js",
+    "static/css/main.05908865.chunk.css",
+    "static/js/main.10536f44.chunk.js"
+  ]
+}
