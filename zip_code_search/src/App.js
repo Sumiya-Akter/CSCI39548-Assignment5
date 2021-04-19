@@ -63,7 +63,7 @@ class searchAPI extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h3>Search Zip: </h3>
+          <h3>Zip Code Search: </h3>
           <input type="text" value={this.state.Zip} placeholder="zip code" onChange={this.handleInputChange}/>
           <button className="search-zip" onClick={this.handleSearchClick}>Search</button>
         </div>
