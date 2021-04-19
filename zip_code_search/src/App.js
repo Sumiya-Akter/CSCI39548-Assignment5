@@ -48,12 +48,10 @@ class searchAPI extends Component {
         for (let i = 0; i < currData.length; i++) {
           table.push(
             <tbody>
-            <tr>
-            <td> {currData[i].City}, {currData[i].State }</td>
-            </tr>
             <tr key={currData[i].id}>
             <td>
             <ul>
+            <td> {currData[i].City}, {currData[i].State }</td>
             <li>State: {currData[i].State}</li>
             <li>Location: {currData[i].Lat}, {currData[i].Long}</li>
             <li>Estimated Population: {currData[i].EstimatedPopulation}</li>
