@@ -1,7 +1,6 @@
 import { Component } from 'react';
 import './App.css';
-// eslint-disable-next-line
-import { render } from 'react-dom';
+import axios from 'axios';
 
 //creates array for api data, an open string for City and state is set to false until found
 class searchAPI extends Component {
@@ -18,7 +17,7 @@ class searchAPI extends Component {
     this.setState({ City: event.target.value.toUpperCase()});
   }
 //function for what happens when you click the search button
-  handleSearchClick = async () => {
+  handleSearchClick = async() => {
     let cityName = this.state.City;
     // eslint-disable-next-line
     let linkToAPI = 'https://ctp-zip-api.herokuapp.com/city/' + cityName;
@@ -58,8 +57,8 @@ class searchAPI extends Component {
       <div className="App">
         <div className="App-header">
           <h3>Search City: </h3>
-          <input type="text" placeholder="city name" onChange={this.handleInputChange}/>
-          <button className="search city" onClick={this.handleSearchClick}>Search</button>
+          <input type="text" value={this.state.City} placeholder="city name" onChange={this.handleInputChange}/>
+          <button className="search-city" onClick={this.handleSearchClick}>Search</button>
         </div>
         <br/>
         <h5>Zip Codes: </h5>

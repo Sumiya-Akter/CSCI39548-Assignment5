@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import './App.css';
-// eslint-disable-next-line
 import axios from 'axios';
 
 
@@ -23,7 +22,6 @@ class searchAPI extends Component {
 //function for what happens when you click the search button
   handleSearchClick = async() => {
     let ZipCode = this.state.Zip;
-    // eslint-disable-next-line
     let linkToAPI = 'https://ctp-zip-api.herokuapp.com/zip/' + ZipCode;
     console.log(this.state.Zip);
     try {
@@ -40,26 +38,20 @@ class searchAPI extends Component {
 
   makeTable = () => {
     let currData = this.state.apiData;
-    console.log("apiData: ", currData);
     let foundMatch = this.state.found;
-    console.log("match: ", foundMatch);
     let table = [];
     //found is false when we get 404 error
     if(!foundMatch){
-        console.log("No result found");
         table.push(<tr key={-1}><td>No Results</td></tr>);
         return table;
     } else {
         for (let i = 0; i < currData.length; i++) {
-          console.log("State: ", currData[i].State);
-          console.log("Population: ", currData[i].EstimatedPopulation);
-          console.log("Wages: ", currData[i].TotalWages);
           table.push(
             <tr key={currData[i].id}>
-              <td>City: {currData[i].City}</td>
-              <td>State: {currData[i].State}</td>
+              <td>State: {currData[i].State},</td>
+              <td>Location: {currData[i].Lat}, {currData[i].Long},</td>
+              <td>Estimated Population: {currData[i].EstimatedPopulation},</td>
               <td>Total Wages: {currData[i].TotalWages}</td>
-              <td>Estimated Population: {currData[i].EstimatedPopulation}</td>
             </tr>
           );
         }
@@ -76,11 +68,11 @@ class searchAPI extends Component {
           <button className="search-zip" onClick={this.handleSearchClick}>Search</button>
         </div>
         <br/>
-                <table id="data">
-                    <tbody>
-                    {this.makeTable()}
-                    </tbody>
-                </table>
+          <table id="data">
+            <tbody>
+                {this.makeTable()}
+            </tbody>
+          </table>
       </div>
     );
   }
